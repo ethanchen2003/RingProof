@@ -1,4 +1,4 @@
-### RingProof
+# RingProof
 Application for Caller ID verification
 This full-stack application provides spam number that relies on crowd-sourcing information. It provides basic functionalities such as user registration, authentication, phone number submission, identification, and spam filtering.
 
