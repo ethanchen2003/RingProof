@@ -18,20 +18,6 @@ This full-stack application provides spam number that relies on crowd-sourcing i
 - **Version Control**: Git
 
 
-## Getting Started
-### Prerequisites
-Go (version 1.15 or newer)
-Docker & Docker Compose (for containerized database setup)
-Node.js & npm (if developing a frontend)
-
-### Installation
-Clone the repository
-bash
-Copy code
-git clone https://github.com/yourusername/truecaller-like-go-app.git
-cd truecaller-like-go-app
-Set up the database
-
 ## Project Structure
 /cmd: Main applications for this project.
 /internal: Private application and library code.
