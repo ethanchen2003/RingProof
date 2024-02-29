@@ -19,16 +19,19 @@ This full-stack application provides spam number that relies on crowd-sourcing i
 
 
 ## Project Structure
-/cmd: Main applications for this project.
-/internal: Private application and library code.
-/pkg: Library code that's ok to use by external applications.
-/api: API controllers and routing information.
-/models: Data models and database interaction.
-/middleware: HTTP middleware functions.
-/auth: Authentication and authorization logic.
+
+- `/cmd`: Main applications for this project.
+- `/internal`: Private application and library code.
+- `/pkg`: Library code that's ok to use by external applications.
+- `/api`: API controllers and routing information.
+- `/models`: Data models and database interaction.
+- `/middleware`: HTTP middleware functions.
+- `/auth`: Authentication and authorization logic.
 
 ## Acknowledgments
-Go community for invaluable resources and libraries
-Gin/Gorilla Mux for routing
-GORM for object-relational mapping
-All contributors and users of this project
+
+- Go community for invaluable resources and libraries.
+- Gin/Gorilla Mux for routing.
+- GORM for object-relational mapping.
+- All contributors and users of this project.
+
