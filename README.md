@@ -1,6 +1,6 @@
 # RingProof
-Application for Caller ID verification
-This full-stack application provides spam number identification that relies on crowd-sourcing information. It provides basic functionalities such as user registration, authentication, phone number submission, identification, and spam filtering.
+Application for Caller ID verification.
+This application provides spam number identification and will rely on crowd-sourcing information. It provides basic functionalities such as user registration, authentication, phone number submission, identification, and spam filtering.
 
 ## Features
 - **User Registration and Authentication**: Securely register and authenticate users.
