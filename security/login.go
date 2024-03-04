@@ -63,7 +63,7 @@ func Login(response http.ResponseWriter, r *http.Request) {
 
 func renderTemplate(response http.ResponseWriter, tmpl string, user *User) {
 	t, err := template.ParseFiles(tmpl + ".html")
-
+	
 	if err != nil {
 		fmt.Print(err)
 		return
