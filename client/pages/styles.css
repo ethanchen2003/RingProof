@@ -1,0 +1,94 @@
+.background {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    width: 100vw; /* Full width of the viewport */
+    background-color: #0D1B2A; /* Dark blue background */
+    margin: 0; /* Make sure there is no default margin */
+    position: relative; /* Needed for absolute positioning of background elements */
+}
+
+  
+  .login-container {
+    text-align: center;
+    width: 300px; /* fixed width instead of max-width */
+  }
+  
+  .login-form {
+    background: #1B263B; /* Darker shade for the form background */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.5); /* more pronounced shadow */
+  }
+  
+  .company-name {
+    font-size: 24px;
+    color: #FFFFFF; /* White color for the text */
+    margin-bottom: 20px;
+    font-weight: bold; /* If the logo is bold */
+  }
+  
+  .input-group input {
+    width: calc(100% - 20px); /* Adjust width to account for padding */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none; /* No border */
+    border-radius: 20px; /* More rounded corners */
+    background-color: #14213D; /* Even darker shade for input fields */
+    color: #FFFFFF; /* White text */
+  }
+  
+  .input-group input::placeholder {
+    color: #A2A2A2; /* Light gray for placeholder */
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 15px; /* More padding for a bigger button */
+    border: none;
+    background-color: #0A79DF; /* Bright blue for the button */
+    color: white;
+    border-radius: 20px; /* Rounded corners for the button */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transition for smooth color change */
+  }
+  
+  .login-button:hover {
+    background-color: #084c9a; /* Darker shade when hovered */
+  }
+  
+  .login-footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #A2A2A2; /* Light gray for the footer text */
+  }
+  
+  .login-footer a {
+    color: #3498db; /* Light blue for links */
+    text-decoration: none;
+  }
+  
+  .login-footer span {
+    margin: 0 5px;
+    color: #A2A2A2; /* Light gray for the separator */
+  }
+  
+  .login-footer p {
+    margin-top: 10px;
+  }
+
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-size: cover; /* Cover the entire body with the image */
+    z-index: -1; /* Place it behind the content */
+    opacity: 0.5; /* Adjust the visibility of the background image */
+}
+
+  
