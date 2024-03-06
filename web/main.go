@@ -8,26 +8,32 @@ import (
 	"github.com/phoneapp/service"
 )
 
+func enableCORS(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+		if r.Method == "OPTIONS" {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+
+		next.ServeHTTP(w, r)
+	})
+}
+
 func main() {
 	mux := http.NewServeMux()
 
-	loginPageHandler := http.HandlerFunc(security.LoginPage)
-	signinHandler := http.HandlerFunc(security.Login)
-	welcomeHandler := http.HandlerFunc(security.Welcome)
-	logoutHandler := http.HandlerFunc(security.Logout)
-
-	spamPhoneHandler := http.HandlerFunc(service.SubmitSpamPhone)
-
-	mux.Handle("/", loginPageHandler)
-	mux.Handle("/signin", signinHandler)
-	mux.Handle("/welcome", welcomeHandler)
-	mux.Handle("/logout", logoutHandler)
-	mux.Handle("/spamPhone", spamPhoneHandler)
+	mux.Handle("/", enableCORS(http.HandlerFunc(security.LoginPage)))
+	mux.Handle("/signin", enableCORS(http.HandlerFunc(security.Login)))
+	mux.Handle("/welcome", enableCORS(http.HandlerFunc(security.Welcome)))
+	mux.Handle("/logout", enableCORS(http.HandlerFunc(security.Logout)))
+	mux.Handle("/spamPhone", enableCORS(http.HandlerFunc(service.SubmitSpamPhone)))
 
 	log.Print("Listening on :8080...")
-
-	err := http.ListenAndServe(":8080", mux)
-
-	log.Fatal(err)
-
+	if err := http.ListenAndServe(":8080", mux); err != nil {
+		log.Fatal(err)
+	}
 }

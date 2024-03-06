@@ -1,6 +1,7 @@
 package security
 
 import (
+	"encoding/json"
 	"fmt"
 	"html/template"
 	"log"
@@ -43,27 +44,39 @@ func LoginPage(response http.ResponseWriter, request *http.Request) {
 }
 
 func Login(response http.ResponseWriter, r *http.Request) {
-	username := r.FormValue("username")
-	password := r.FormValue("password")
-	user := &User{Password: password, Username: username}
+	var creds struct {
+		Username string `json:"username"`
+		Password string `json:"password"`
+	}
+
+	err := json.NewDecoder(r.Body).Decode(&creds)
+	if err != nil {
+		log.Printf("Error decoding login request: %v", err)
+		response.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	log.Printf("Login attempt with username: %s, password: %s", creds.Username, creds.Password)
+
+	user := &User{Password: creds.Password, Username: creds.Username}
 
 	userSession, ok := process_user(user)
-
 	if !ok {
+		log.Printf("Login failed for user: %s", creds.Username)
 		response.WriteHeader(http.StatusUnauthorized)
-		//show login fail page
-		http.Redirect(response, r, "/", http.StatusFound)
 		return
 	}
 
 	set_session(response, *userSession)
-	http.Redirect(response, r, "/welcome", http.StatusFound)
-	//renderTemplate(response, "templates/welcome", user)
+
+	response.Header().Set("Content-Type", "application/json")
+	response.WriteHeader(http.StatusOK)
+	json.NewEncoder(response).Encode(map[string]string{"message": "Login successful"})
 }
 
 func renderTemplate(response http.ResponseWriter, tmpl string, user *User) {
 	t, err := template.ParseFiles(tmpl + ".html")
-	
+
 	if err != nil {
 		fmt.Print(err)
 		return
